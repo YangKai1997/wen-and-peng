@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			
+			.big{
+				
+				background: url(img/wen_peng.jpg)no-repeat;
+				background-size: 100%;
+				
+				width: 400px;
+				height: 400px;
+				border: 1px solid black;
+				border-radius: 50%;
+				margin: 100px auto;
+				position: relative;
+			}
+			ul{
+				width: 400px;
+				height: 400px;
+				border-radius: 50%;
+			}
+			li{
+				list-style: none;
+				width: 2px;
+				height: 10px;
+				background: black;
+				position: absolute;
+				left:200px;
+				top: 0;
+				transform-origin: center 200px;
+				
+			}
+			li:nth-of-type(5n){
+				height: 20px;
+			}
+			
+			
+			#hours{
+				width: 10px;
+				height: 70px;
+				background: #fff;
+				position: absolute;
+				top: 131px;
+				left: 50%;
+				transform-origin: 100% 100%;
+				margin-left: -10px;
+			}
+			#minute{
+				width: 10px;
+				height: 100px;
+				background: #fff;
+				position: absolute;
+				top: 100px;
+				left:48%;
+				transform-origin: 100% 100%;
+				
+			}
+			#second{
+				width: 10px;
+				height: 130px;
+				background:#fff;
+				position: absolute;
+				top: 69px;
+				left:50%;
+				transform: translateX(-50%);
+				margin-left: -12px;
+				transform-origin: 100% 100%;
+				
+			}
+			.yuan{
+				width: 26px;
+				height: 26px;
+				background: #fff;
+				border-radius: 50%;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%,-50%);
+			}
+			.one{
+				font-size: 30px;
+				position: absolute;
+				left: 182px;
+				top: 20px;
+				color: #fff;
+			}
+			.two{
+				font-size: 30px;
+				position: absolute;
+				left: 192px;
+				top: 340px;
+				color: #fff;
+				
+			}
+			.three{
+				font-size: 30px;
+				position: absolute;
+				left: 360px;
+				top: 178px;
+				color: #fff;
+				
+			}
+			.four{
+				font-size: 30px;
+				position: absolute;
+				left: 30px;
+				top: 178px;
+				color: #fff;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div class="big" id="big">
+			<ul></ul>
+			<div id="hours"></div>
+			<div id="minute"></div>
+			<div id="second"></div>
+			<div class="yuan"></div>
+			<p class="one">12</p>
+			<p class="two">6</p>
+			<p class="three">3</p>
+			<p class="four">9</p>
+
+		</div>
+		
+		<script type="text/javascript">
+		
+			var big=document.getElementById('big');
+			var oul=document.getElementsByTagName('ul')[0];
+			for(var i=0;i<60;i++){
+				var li=document.createElement('li');
+				
+				oul.appendChild(li);
+			}
+			
+			var oli=document.getElementsByTagName('li');
+			for(var j=0;j<60;j++){
+				oli[j].style.transform='rotate('+(j+1)*6+'deg)';
+			}
+			
+			var hours=document.getElementById('hours');
+			var minute=document.getElementById('minute');
+			var second=document.getElementById('second');
+			
+			setInterval(function(){
+				var nowtime=new Date();
+				var Hours=nowtime.getHours();
+				var Minute=nowtime.getMinutes();
+				var Second=nowtime.getSeconds();
+				
+				second.style.transform='rotate('+(Second)*6+'deg)';
+				minute.style.transform='rotate('+(Minute+Second/60)*6+'deg)';
+				hours.style.transform='rotate('+(Hours+Minute/60)*30+'deg)';
+				
+			},1000)
+		</script>
+	</body>
+</html>
+
+
